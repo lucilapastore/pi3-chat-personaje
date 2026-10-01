@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat con personaje</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- Cabecera: nombre del personaje y navegación -->
+    <header class="app-header">
+      <div class="character">
+        <div class="avatar" aria-hidden="true">?</div>
+        <div>
+          <h1 class="character-name">Nombre del personaje</h1>
+          <p class="character-status">en línea</p>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/chat" class="nav-link is-active">Chat</a>
+        <a href="/about" class="nav-link">About</a>
+      </nav>
+    </header>
+
+    <!-- Área principal: lista de mensajes -->
+    <main class="chat" id="chat-messages" aria-live="polite">
+      <!-- Mensajes de ejemplo para ver el diseño; luego los generará JS -->
+      <div class="message message--character">
+        <p>¡Hola! Preguntame lo que quieras.</p>
+      </div>
+      <div class="message message--user">
+        <p>Hola, ¿cómo estás?</p>
+      </div>
+
+      <!-- Estado de carga: "escribiendo..." -->
+      <div class="message message--character message--typing" aria-label="El personaje está escribiendo">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+
+      <!-- Estado de error -->
+      <div class="message message--error" role="alert">
+        <p>No se pudo enviar el mensaje. Intentá de nuevo.</p>
+      </div>
+    </main>
+
+    <!-- Input -->
+    <form class="chat-form" id="chat-form">
+      <label for="chat-input" class="visually-hidden">Escribí tu mensaje</label>
+      <input
+        type="text"
+        id="chat-input"
+        class="chat-input"
+        placeholder="Escribí tu mensaje..."
+        autocomplete="off"
+        required
+      />
+      <button type="submit" class="chat-send" id="chat-send">Enviar</button>
+    </form>
+
+    <footer class="app-footer">
+      <small>Proyecto Integrador 3 · ComicSansCon</small>
+    </footer>
+  </div>
+</body>
+</html>
