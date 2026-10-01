@@ -160,7 +160,8 @@ body {
   background: var(--bg);
 }
 
-/* ========== Tablet y escritorio ========== */
+/* ========== Tablet (≥ 768px) ========== */
+/* La app se centra como una "tarjeta" y el header pasa a una sola fila */
 @media (min-width: 768px) {
   body { display: grid; place-items: center; }
   .app {
@@ -176,4 +177,35 @@ body {
     justify-content: space-between;
   }
   .message { max-width: 70%; }
+}
+
+/* ========== Escritorio (≥ 1024px) ========== */
+/* Grid de dos columnas: barra lateral (header) + conversación */
+@media (min-width: 1024px) {
+  .app {
+    width: 960px;
+    grid-template-columns: 280px 1fr;
+    grid-template-rows: 1fr auto auto;
+  }
+  .app-header {
+    grid-column: 1;
+    grid-row: 1 / -1; /* ocupa todo el alto de la columna izquierda */
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: 1.5rem;
+    border-bottom: 0;
+    border-right: 1px solid var(--character-bg);
+  }
+  .avatar { width: 64px; height: 64px; font-size: 1.5rem; }
+  .character { flex-direction: column; text-align: center; }
+  .nav { flex-direction: column; gap: 0.5rem; }
+  .nav-link { font-size: 1rem; padding: 0.5rem 0; }
+
+  /* Lo demás se acomoda en la columna derecha */
+  .chat { grid-column: 2; grid-row: 1; }
+  .chat-form { grid-column: 2; grid-row: 2; }
+  .app-footer { grid-column: 2; grid-row: 3; }
+  .message { max-width: 65%; }
 }

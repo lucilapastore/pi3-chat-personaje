@@ -69,7 +69,7 @@ project-root/
 ## Decisiones tomadas
 - Diseño base oscuro con variables CSS en `:root` (`--user-bg`, `--character-bg`, etc.), fácil de cambiar para el personaje.
 - Layout con CSS Grid (`auto 1fr auto auto`) y `100dvh`; Flexbox para la lista de mensajes.
-- Breakpoint de escritorio en `768px`.
+- Breakpoints: tablet en `768px` (app centrada como tarjeta de 640px, header en una fila) y escritorio en `1024px` (Grid de 2 columnas: header como barra lateral de 280px + chat).
 - Convención de clases tipo BEM: `message--user`, `message--character`, `message--typing`, `message--error`.
 
 ## Pendiente de decidir
