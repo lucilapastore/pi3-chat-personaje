@@ -29,14 +29,22 @@ body {
 }
 
 /* ========== Layout (mobile-first) ========== */
-/* Grid de una columna: header / mensajes (flexible) / input / footer */
+/* Grid de una columna: header / vista (flexible) / footer */
 .app {
   display: grid;
-  grid-template-rows: auto 1fr auto auto;
+  grid-template-rows: auto 1fr auto;
   height: 100dvh;
   max-width: 100%;
   margin: 0 auto;
   background: var(--surface);
+}
+
+/* Contenedor de la vista actual (lo llena el router).
+   Es un grid propio: la vista ocupa el espacio y, en el chat, el input queda abajo */
+#app {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 0; /* permite que .chat haga scroll en vez de agrandar la pantalla */
 }
 
 /* ========== Header ========== */
@@ -122,6 +130,21 @@ body {
   40% { opacity: 1; transform: translateY(-3px); }
 }
 
+/* ========== Vistas Home y About ========== */
+.page { padding: 1.5rem 1rem; overflow-y: auto; }
+.page h2 { margin: 0 0 var(--gap); }
+.page p { color: var(--text-muted); max-width: 60ch; }
+.cta {
+  display: inline-block;
+  margin-top: var(--gap);
+  padding: 0.7rem 1.2rem;
+  color: #fff;
+  background: var(--user-bg);
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
 /* ========== Input ========== */
 .chat-form {
   display: flex;
@@ -185,7 +208,7 @@ body {
   .app {
     width: 960px;
     grid-template-columns: 280px 1fr;
-    grid-template-rows: 1fr auto auto;
+    grid-template-rows: 1fr auto;
   }
   .app-header {
     grid-column: 1;
@@ -203,9 +226,8 @@ body {
   .nav { flex-direction: column; gap: 0.5rem; }
   .nav-link { font-size: 1rem; padding: 0.5rem 0; }
 
-  /* Lo demás se acomoda en la columna derecha */
-  .chat { grid-column: 2; grid-row: 1; }
-  .chat-form { grid-column: 2; grid-row: 2; }
-  .app-footer { grid-column: 2; grid-row: 3; }
+  /* La vista y el footer se acomodan en la columna derecha */
+  #app { grid-column: 2; grid-row: 1; }
+  .app-footer { grid-column: 2; grid-row: 2; }
   .message { max-width: 65%; }
 }
